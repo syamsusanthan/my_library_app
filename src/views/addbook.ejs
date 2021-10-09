@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title><%=title%></title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="css/styles.css" rel="stylesheet">
+	</head>
+	<body>
+    <video autoplay muted loop id="myvid" src="/videos/bg vid.mp4" type="video/mp4"></video>
+
+    <div class="content">
+      <!-- navbar start -->
+<header class="navbar navbar-bright navbar-fixed-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/main" class="navbar-brand">Home</a>
+    </div>
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+          <%for(i=0;i<nav.length;i++){%>
+        <li>
+          <a href="<%=nav[i].link%>"><%=nav[i].name%></a>
+        </li>
+       <%}%>
+      </ul>
+      <ul class="nav navbar-right navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
+          <ul class="dropdown-menu" style="padding:12px;">
+            <form class="form-inline">
+              <button type="submit" class="btn btn-default pull-right"><i class="glyphicon glyphicon-search"></i></button><input type="text" class="form-control pull-left" placeholder="Search">
+            </form>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!-- navbar end -->
+<div id="masthead">  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <h1 style="font-size: 50px;">Add Book
+          <p class="lead"></p>
+        </h1>
+      </div>
+    
+    </div> 
+  </div><!-- /cont -->
+  
+  <div style="background-color: rgba(0, 0, 0, 0);" class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div style="background-color: rgba(0, 0, 0, 0);"  class="top-spacer"> </div>
+      </div>
+    </div> 
+  </div><!-- /cont -->
+  </div>
+  <!-- form container start -->
+<div style="background-color: rgba(0, 0, 0, 0);"  class="container" >
+  <div style="background-color: rgba(0, 0, 0, 0);"  class="row">
+    <div style="background-color: rgba(0, 0, 0, 0);"  class="col-md-12"> 
+      <div style="background-color: rgba(0, 0, 0, 0);"  class="panel">
+        <div style="background-color: rgba(0, 0, 0, 0);"  class="panel-body">
+          <!--/add book form-->
+          <div style="background-color: rgba(0, 0, 0, 0);"  class="row container">    
+           <form style="border: 2px solid black; margin-left: 30%;margin-right: 34%;margin-top: -1%; background-color: #00004493;padding-bottom: 4%;padding-top: 3%;text-align: center;" method="GET" action="#" onsubmit="return validate()">
+              <br>
+              <p style="color:black;"><b style="color: white;">Title:</b>   <input onkeyup="key()" id="title" style="margin-left: 15px;" type="text" name="title"></p>   <br><br>
+              <p style="color: black;"><b style="color: white;">Author:</b>  <input onkeyup="key()" id="author" type="text" name="author"></p><br><br>
+              <p style="color: black;"><b style="color: white;">Genre:</b>  <input onkeyup="key()" id="genre" style="margin-left: 4px;" type="text" name="genre"></p> <br><br>
+              <p style="color: white;"><b style="color: white;margin-left: 18%;">Image:</b>  <input id="image" style="float: right;margin-right: 1%;" type="file" name="image"></p> <br>
+              <label  style="margin-left: 10px;" id="error" for="error"></label><br> 
+              <button id="adbk" style="width: 20%;" type="submit">Add Book</button>
+           </form>
+          </div>
+          
+         <!--/add book form-->
+        </div>
+      </div>
+    </div><!--/col-12-->
+  </div>
+</div>
+<!-- footer start -->
+<div class="container" id="footer">
+  <div class="row">
+    <div class="col col-sm-12">
+      <h1>Follow Us</h1>
+      <div class="btn-group">
+       <a class="btn btn-twitter btn-lg" href="#"><i class="icon-twitter icon-large"></i> Twitter</a>
+	     <a class="btn btn-facebook btn-lg" href="#"><i class="icon-facebook icon-large"></i> Facebook</a>
+	     <a class="btn btn-google-plus btn-lg" href="#"><i class="icon-google-plus icon-large"></i> Google+</a>
+      </div>
+    </div>
+  </div>
+</div>
+<footer id="fotcolor">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <ul class="list-inline">
+          <li><i class="icon-facebook icon-2x"></i></li>
+          <li><i class="icon-twitter icon-2x"></i></li>
+          <li><i class="icon-google-plus icon-2x"></i></li>
+          <li><i class="icon-pinterest icon-2x"></i></li>
+        </ul>
+      </div>
+      <div class="col-sm-6">
+          <p class="pull-right">Built with <i class="icon-heart-empty"></i> at <a href="http://www.bootply.com">Bootply</a></p>      
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- footer end -->
+    </div>
+	<!-- script references -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+        <script src="js/validate.js"></script>
+	</body>
+</html>
