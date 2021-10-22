@@ -1,15 +1,23 @@
 const express = require('express');
 const adminauthorRouter= express.Router();
-
-function router(nav){
+const  Authordata=require('../model/Authordata');
+function router(nav,upload){
     adminauthorRouter.get('/',function(req,res){
         res.render("addauthor",{
             nav,
             title:'Library'
         })
     })
-    adminauthorRouter.get('/add',function(req,res){
-        res.send("Author is successfully added");
+    adminauthorRouter.post('/add',upload.single("image"),function(req,res){
+        var item={
+            name:req.body.name,
+            country:req.body.country,
+            genre:req.body.genre,
+            image:req.file.filename
+        }
+        var author= Authordata(item);
+        author.save();
+        res.redirect('/authors');
     })
     return adminauthorRouter;
 }

@@ -71,6 +71,14 @@ footer {
 #indexbut:hover{
   background-color: black;
 }
+/* UPDATE IMAGE BUTTON */
+#update{
+  color: black;
+}
+#update:hover{
+  color: white;
+  background-color: blue;
+}
 /* login form styles */
 #log{
   margin-top: 12%; 
@@ -253,6 +261,7 @@ a,a:hover {
   padding:6px;
   color:#fff;
 }
+
     
 .btn-twitter {background-color:#4099FF;color:#fff;}
 .btn-facebook {background-color:#3B5998;color:#fff;}

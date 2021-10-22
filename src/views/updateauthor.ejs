@@ -6,18 +6,18 @@
 		<title><%=title%></title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<link href="css/styles.css" rel="stylesheet">
+		<link href="/css/styles.css" rel="stylesheet">
 	</head>
 	<body>
     <video autoplay muted loop id="myvid" src="/videos/bg vid.mp4" type="video/mp4"></video>
-
     <div class="content">
-      <!-- navbar start -->
+       <!-- navigation bar start -->
+
 <header class="navbar navbar-bright navbar-fixed-top" role="banner">
   <div class="container">
     <div class="navbar-header">
@@ -50,66 +50,78 @@
     </nav>
   </div>
 </header>
-<!-- navbar end -->
-<div id="masthead">  
+<!-- navigation bar end -->
+<div   id="masthead"  >  
   <div class="container">
     <div class="row">
       <div class="col-md-7">
-        <h1 style="font-size: 50px;">Add Book
+        <h1 style="font-size: 70px;">Update Author
           <p class="lead"></p>
         </h1>
       </div>
-    
+      
     </div> 
   </div><!-- /cont -->
   
-  <div style="background-color: rgba(0, 0, 0, 0);" class="container">
+  <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <div style="background-color: rgba(0, 0, 0, 0);"  class="top-spacer"> </div>
+        <div  style="background-color: rgba(0, 0, 0, 0);" class="top-spacer"> </div>
       </div>
     </div> 
   </div><!-- /cont -->
-  </div>
-  <!-- form container start -->
-<div style="background-color: rgba(0, 0, 0, 0);"  class="container" >
-  <div style="background-color: rgba(0, 0, 0, 0);"  class="row">
-    <div style="background-color: rgba(0, 0, 0, 0);"  class="col-md-12"> 
-      <div style="background-color: rgba(0, 0, 0, 0);"  class="panel">
-        <div style="background-color: rgba(0, 0, 0, 0);"  class="panel-body">
-          <!--/add book form-->
-          <div style="background-color: rgba(0, 0, 0, 0);"  class="row container">    
-           <form style="border: 2px solid black; margin-left: 30%;margin-right: 34%;margin-top: -1%; background-color: #00004493;padding-bottom: 4%;padding-top: 3%;text-align: center;" method="POST" action="/adminbooks/add" enctype="multipart/form-data" onsubmit="return validate()">
-              <br>
-              <p style="color:black;"><b style="color: white;">Title:</b>   <input onkeyup="key()" id="title" style="margin-left: 15px;" type="text" name="title"></p>   <br><br>
-              <p style="color: black;"><b style="color: white;">Author:</b>  <input onkeyup="key()" id="author" type="text" name="author"></p><br><br>
-              <p style="color: black;"><b style="color: white;">Genre:</b>  <input onkeyup="key()" id="genre" style="margin-left: 4px;" type="text" name="genre"></p> <br><br>
-              <p style="color: white;"><b style="color: white;margin-left: 18%;">Image:</b>  <input id="image" style="float: right;margin-right: 1%;" type="file" name="image"></p> <br>
-              <label  style="margin-left: 10px;" id="error" for="error"></label><br> 
-              <button id="adbk" style="width: 20%;" type="submit">Add Book</button>
+  
+</div>
+
+<!-- add book form container start -->
+<div  style="background-color: rgba(0, 0, 0, 0);" class="container">
+  <div  style="background-color: rgba(0, 0, 0, 0);" class="row">
+    
+    <div  style="background-color: rgba(0, 0, 0, 0);" class="col-md-12"> 
+      
+      <div  style="background-color: rgba(0, 0, 0, 0);" class="panel">
+        <div class="panel-body">
+         <!--add book form start-->
+          <div class="row container">    
+           <form style="margin-top: 4%; margin-left: 28%;margin-right: 32%;border: 2px solid black; background-color: rgba(13, 13, 14, 0.692);padding: 2%;padding-bottom: 4%;padding-top: 3%;text-align: center;" method="POST" action="/authors/updatauthor/<%=author._id%>" enctype="multipart/form-data" onsubmit="return check()">
+               <br>
+              <p style="color: black;"><b style="color: white;"> Name: </b>   <input onkeyup="upkey()" id="nam" value="<%=author.name%>" style="margin-left: 14px;" type="text" name="name"></p><br><br>
+              <p style="color: black;"><b style="color: white;"> Nationality:</b> <input onkeyup="upkey()" id="born" value="<%=author.country%>" style="margin-left: 13px;margin-right: 7%;" type="text" name="country"></p> <br><br>
+              <p style="color: black;"><b style="color: white;">Genre:</b>  <input onkeyup="upkey()" id="gen" value="<%=author.genre%>" style="margin-left: 14px;" type="text" name="genre"></p><br><br>
+              
+              <label  style=" margin-left: 10px;" id="er" for="error"></label><br> 
+              <button  id="adbk" style="width: 30%;" type="submit">Update</button>
            </form>
           </div>
           
-         <!--/add book form-->
+         <!--/add book form end-->
         </div>
       </div>
     </div><!--/col-12-->
   </div>
 </div>
+<!-- add book form container end -->                                           
+                                                                                
+
 <!-- footer start -->
 <div class="container" id="footer">
   <div class="row">
     <div class="col col-sm-12">
+      
       <h1>Follow Us</h1>
       <div class="btn-group">
        <a class="btn btn-twitter btn-lg" href="#"><i class="icon-twitter icon-large"></i> Twitter</a>
-	     <a class="btn btn-facebook btn-lg" href="#"><i class="icon-facebook icon-large"></i> Facebook</a>
-	     <a class="btn btn-google-plus btn-lg" href="#"><i class="icon-google-plus icon-large"></i> Google+</a>
+	   <a class="btn btn-facebook btn-lg" href="#"><i class="icon-facebook icon-large"></i> Facebook</a>
+	   <a class="btn btn-google-plus btn-lg" href="#"><i class="icon-google-plus icon-large"></i> Google+</a>
       </div>
+      
     </div>
   </div>
 </div>
-<footer id="fotcolor">
+
+
+
+<footer id="ftcolor">
   <div class="container">
     <div class="row">
       <div class="col-sm-6">
@@ -119,6 +131,7 @@
           <li><i class="icon-google-plus icon-2x"></i></li>
           <li><i class="icon-pinterest icon-2x"></i></li>
         </ul>
+        
       </div>
       <div class="col-sm-6">
           <p class="pull-right">Built with <i class="icon-heart-empty"></i> at <a href="http://www.bootply.com">Bootply</a></p>      
@@ -128,9 +141,10 @@
 </footer>
 <!-- footer end -->
     </div>
+   
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-        <script src="js/validate.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+        <script src="/js/validate.js"></script>
 	</body>
 </html>

@@ -92,6 +92,7 @@ function  logcheck(){
     var user=document.getElementById("user").value;
     var pwd= document.getElementById("pwd").value;
     var loger=document.getElementById("loger");
+    var email=/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if(user.trim()==""||pwd.trim()==""){
         loger.innerHTML="Fields Can Not Be Empty";
         loger.style.color="yellow";
@@ -100,7 +101,7 @@ function  logcheck(){
     }
     if(user.trim()!=""&&pwd.trim()!=""){
         loger.innerHTML="";
-        if(user=="admin" && pwd=="1234"){
+        if(email.test(user)||user=="admin"){
             return true;
         }
         else{
@@ -215,9 +216,15 @@ function cofmcheck(){
         }
     }
 }
-function msg(){
-    if(n==1&&e==1&&p==1&&r==1){
-        alert("Now you are a member of our digital library.Login to continue");
-        
+// update image form validation
+function imgchecker(){
+    var image=document.getElementById('upimage');
+    if(image.files.length==0){
+        alert("choose an image");
+        return false;
+
+    }
+    else{
+        return true;
     }
 }

@@ -49,11 +49,11 @@
 <!-- navbar end -->
 
 <!-- login form start -->
-<form id="log"  action="/main" onsubmit="return logcheck()">
+<form id="log"  action="/login" method="POST" onsubmit="return logcheck()">
     <h3 style="color: white;">User Login</h3>
    
-    <input id="user" type="text" placeholder="Enter User Name"><br><br><br>
-    <input id="pwd" type="password" placeholder="Enter Password"><br><br>
+    <input id="user" type="text" name="username" placeholder="Enter User Name"><br><br><br>
+    <input id="pwd" type="password"  name="password"  placeholder="Enter Password"><br><br>
     <label id="loger"></label><br>
     <button id="logbut" type="submit">Login</button><br><br>
     <p style="color: white;">Need an account? <a style="color: rgb(208, 255, 0);" href="/signup"><u>signup</u> </a></p>

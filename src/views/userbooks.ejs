@@ -16,7 +16,7 @@
 	<body>
     <video autoplay muted loop id="myvid" src="/videos/bg vid.mp4" type="video/mp4"></video>
     <div class="content">
-      <!-- navbar start -->
+       <!-- navbar start -->
 <header class="navbar navbar-bright navbar-fixed-top" role="banner">
   <div class="container">
     <div class="navbar-header">
@@ -26,12 +26,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      
+      <a href="/usermain" class="navbar-brand">Home</a>
     </div>
-    <nav class="collapse navbar-collapse" role="navigation" >
+    <nav class="collapse navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
-        
-        <h1 style="font-size: 60px;">Library App</h1>
+          <%for(i=0;i<nav.length;i++){%>
+        <li>
+          <a href="<%=nav[i].link%>"><%=nav[i].name%></a>
+        </li>
+       <%}%>
       </ul>
       <ul class="nav navbar-right navbar-nav">
         <li class="dropdown">
@@ -47,29 +50,74 @@
   </div>
 </header>
 <!-- navbar end -->
+<div id="masthead">  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <h1>Books
+          <p class="lead"></p>
+        </h1>
+      </div>
+    
+    </div> 
+  </div>
+  
+</div>
 
-<!-- signup start -->
-<form id="sign"  method="POST" action="/signup/add" onsubmit="return signcheck()">
-    <h3 style="color: white;">Signup form</h3><br>
-   <br>
-    <input id="first" onkeyup="signcheck()" type="text" style="width: 45%;" placeholder="First Name" name="firstname"><br><br>
-    <input id="last" onkeyup="signcheck()" style="width: 45%;" type="text" placeholder="Last Name" name="lastname"><br><br>
-    <input id="em" onkeyup="signcheck()" style="width: 45%;"type="text" placeholder="Email id" name="email"><br>
-    <label id="noem"></label><br>
-    <input id="pw" onkeyup="signcheck()" style="width: 45%;" type="password" name="password" placeholder="Enter Password"><br>
-    <label  style="width: 45%;"  id="nopw"></label><br>
-    <input id="rpw" onkeyup="signcheck()" style="width: 45%;" type="password" name="confirmation" placeholder="Conform Password"><br>
-    <label id="norpw" ></label><br>
-    <label id="signer"></label><br>
-    <button  id="but" type="submit">Submit</button><br><br>
-    <p style="color: white;">Already have an account? <a style="color: rgb(208, 255, 0);" href="/login"><u>login</u> </a></p>
 
-</form>
-<!-- signup form end -->
-
+<div class="container">
+  <div class="row">
+    
+    <div class="col-md-12"> 
+      
+      <div class="panel">
+        <div class="panel-body">
+          <%for(i=0;i<books.length;i++){%>
+          <div class="row">    
+            <br>
+            <div class="col-md-2 col-sm-3 text-center">
+              <a class="story-title" href="#"><img alt="" src="/images/<%=books[i].image%>" style="width:100px;height:100px" class="img-circle"></a>
+            </div>
+            <div class="col-md-10 col-sm-9">
+              <h3><%=books[i].title%></h3>
+              <div class="row">
+                <div class="col-xs-9">
+                  <h4><span class="label label-default"><%=books[i].author%></span></h4><h4>
+                  <small style="font-family:courier,'new courier';" class="text-muted"><%=books[i].genre%>  <a style="color:red" href="/userbooks/<%=books[i]._id%>" class="text-muted">Read More</a></small><br><br>
+                 
+                </h4></div>
+                <div class="col-xs-3"></div>
+              </div>
+              <br><br>
+            </div>
+          </div>
+          
+          <%}%>
+        </div>
+      </div>
+    </div><!--/col-12-->
+  </div>
+</div>
+                                                
 <!-- footer start -->
-<footer id="fotcolor" style="margin-top: 5%;">
-  <div class="container" >
+<div class="container" id="footer">
+  <div class="row">
+    <div class="col col-sm-12">
+      
+      <h1>Follow Us</h1>
+      <div class="btn-group">
+       <a class="btn btn-twitter btn-lg" href="#"><i class="icon-twitter icon-large"></i> Twitter</a>
+	   <a class="btn btn-facebook btn-lg" href="#"><i class="icon-facebook icon-large"></i> Facebook</a>
+	   <a class="btn btn-google-plus btn-lg" href="#"><i class="icon-google-plus icon-large"></i> Google+</a>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<footer  id="ftcolor">
+  <div class="container">
     <div class="row">
       <div class="col-sm-6">
         <ul class="list-inline">
@@ -88,9 +136,9 @@
 </footer>
 <!-- footer end -->
     </div>
+   
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-        <script src="js/validate.js"></script>
 	</body>
 </html>

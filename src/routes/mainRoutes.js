@@ -6,7 +6,7 @@ function router(nav){
             nav,
             title:'Library',
             boxlink:[
-                {link:'/books',name:'BOOKS'},{link:'/authors',name:'AUTHORS'},{link:'/adminbooks',name:'ADD BOOKS'},{link:'/adminauthor',name:'ADD AUTHORS'}
+                {link:'/books',name: 'BOOKS'},{link:'/authors',name:'AUTHORS'},{link:'/adminbooks',name:'ADD BOOKS'},{link:'/adminauthor',name:'ADD AUTHORS'}
             ]
         })
     })

@@ -1,41 +1,106 @@
 const express = require('express');
 const authorsRouter =express.Router();
-function authorroute(nav){
-    var authors=[
-        {
-            title:'Jonathan Swift',
-            img:'Herman.jpg',
-            about:'Irish author, clergyman and satirist Jonathan Swift grew up fatherless. Under the care of his uncle, he received a bachelors degree from Trinity College and then worked as a statesmans assistant. Eventually, he became dean of St. Patricks Cathedral in Dublin. Most of his writings were published under pseudonyms. He best remembered for his 1726 book Gullivers Travels.'
-        },
-        {
-            title:'Dr. APJ Abdul Kalam',
-            img:'arthur.jpg',
-            about:'Avul Pakir Jainulabdeen Abdul Kalam was an Indian aerospace scientist who served as the 11th president of India from 2002 to 2007. He was born and raised in Rameswaram, Tamil Nadu and studied physics and aerospace engineering'
-        },
-        {
-            title:' Mohandas Karamchand Gandhi',
-           
-            img:'daniel.jpg',
-            about:'Mahatma Gandhi, byname of Mohandas Karamchand Gandhi, (born October 2, 1869, Porbandar, India—died January 30, 1948, Delhi), Indian lawyer, politician, social activist, and writer who became the leader of the nationalist movement against the British rule of India.'
-        }
-    ]
+const  Authordata=require('../model/Authordata');
+function authorroute(nav,upload){
+
     authorsRouter.get('/',function(req,res){
-        res.render("authors",
-        {
-            nav,
-            title:'Library',
-            authors
+        Authordata.find()
+        .then(function(authors){
+            res.render("authors",
+            {
+                nav,
+                title:'Library',
+                authors
+            })
         })
+    
     })
     authorsRouter.get('/:id',function(req,res){
         const id = req.params.id;
-        res.render('author',
-        {
-            nav,
-            title:'Library',
-            author:authors[id]
+        Authordata.findOne({_id:id})
+        .then(function(author){
+            res.render('author',
+            {
+                nav,
+                title:'Library',
+                author
+            }
+            )
+        })
+    
+    })
+    authorsRouter.post('/update/:id',function(req,res){
+        const id=req.params.id;
+        Authordata.findOne({_id:id})
+        .then(function(author){
+            res.render('updateauthor',
+            {
+                nav,
+                title:'library',
+                author
+            })
+        })
+    })
+    authorsRouter.post('/updatauthor/:id',upload.single("image"),function(req,res){
+        const id= req.params.id;
+         const updateDocument= async (id)=>{
+            try{
+                const result= await Authordata.findByIdAndUpdate({_id:id},{$set:{
+                    name:req.body.name,
+                    country:req.body.country,
+                    genre:req.body.genre
+            }},{new:true, useFindAndModify:false});
+                res.redirect('/authors');
+            }catch(err){
+                console.log(err);
+            }
+           
         }
-        )
+
+       updateDocument(id);
+    })
+    authorsRouter.post('/updateauthorimg/:id',function(req,res){
+        const id= req.params.id;
+        Authordata.findOne({_id:id})
+        .then(function(author){
+            res.render('upauthorimg',{
+                nav,
+                title:'library',
+                author
+            })
+        })
+       
+    })
+    authorsRouter.post('/updatauthimg/:id',upload.single("image"),function(req,res){
+        const id= req.params.id;
+         const updateImage= async (id)=>{
+            try{
+                const result= await Authordata.findByIdAndUpdate({_id:id},{$set:{
+                    image:req.file.filename
+            }},{new:true, useFindAndModify:false});
+                res.redirect('/authors');
+            }catch(err){
+                console.log(err);
+            }
+           
+        }
+
+       updateImage(id);
+    })
+   
+
+
+    authorsRouter.post('/delete/:id',function(req,res){
+        const id= req.params.id;
+        const deleteDocument=async (id)=>{
+            try{
+                const result= await Authordata.findByIdAndDelete({_id:id},{new:true, useFindAndModify:false});
+                res.redirect('/authors')
+            }catch(err){
+                console.log(err);
+            }
+        }
+        deleteDocument(id);
     })
     return authorsRouter;
 }

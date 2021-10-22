@@ -77,15 +77,17 @@
           <div class="row">    
             <br>
             <div class="col-md-2 col-sm-3 text-center">
-              <a class="story-title" href="#"><img alt="" src="/images/<%=books[i].img%>" style="width:100px;height:100px" class="img-circle"></a>
+              <a class="story-title" href="#"><img alt="" src="/images/<%=books[i].image%>" style="width:100px;height:100px" class="img-circle"></a>
+              <form action="/books/updateimg/<%=books[i]._id%>" method="POST"><button type="submit" id="update" >Update image</button></form>
             </div>
             <div style="color: black;" class="col-md-10 col-sm-9">
               <h3><%=books[i].title%></h3>
               <div class="row">
                 <div class="col-xs-9">
                   <h4><span class="label label-default"><%=books[i].author%></span></h4><h4>
-                  <small style="font-family:courier,'new courier';color: black;" class="text-muted"><%=books[i].genre%>  <a style="color: red;" href="/books/<%=i%>" class="text-muted">Read More</a></small>
-                  </h4></div>
+                  <small style="font-family:courier,'new courier';color: black;" class="text-muted"><%=books[i].genre%>  <a style="color: red;" href="/books/<%=books[i]._id%>" class="text-muted">Read More</a></small>
+                  <form action="/books/update/<%=books[i]._id%>" method="POST"><button id="update"  type="submit">Update</button></form><br><form action="/books/delete/<%=books[i]._id%>" method="POST" ><button id="update"  type="submit">Delete</button></form>   
+                </h4></div>
                 <div class="col-xs-3"></div>
               </div>
               <br><br>

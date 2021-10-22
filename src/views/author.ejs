@@ -74,15 +74,18 @@
           <div class="row">    
             <br>
             <div class="col-md-2 col-sm-3 text-center">
-              <a class="story-title" href="#"><img alt="" src="/images/<%=author.img%>" style="width:100px;height:100px" class="img-circle"></a>
+              <a class="story-title" href="#"><img alt="" src="/images/<%=author.image%>" style="width:100px;height:100px" class="img-circle"></a>
+              <form action="/authors/updateauthorimg/<%=author._id%>" method="POST"><button type="submit" id="update" >Update image</button></form>
             </div>
             <div style="color: black;" class="col-md-10 col-sm-9">
-              <h3><%=author.title%></h3>
+              <h3><%=author.name%></h3>
+              <h4><%=author.country%></h4>
               <div class="row">
                 <div class="col-xs-9">
-                  <p><%=author.about%></p></div>
+                  <p><%=author.genre%></p></div>
                 <div class="col-xs-3"></div>
               </div>
+              <form action="/authors/update/<%=author._id%>" method="POST"><button id="update"  type="submit">Update</button></form><br><form action="/authors/delete/<%=author._id%>" method="POST" ><button id="update"  type="submit">Delete</button></form>
               <br><br>
             </div>
           </div>

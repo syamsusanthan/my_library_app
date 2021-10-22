@@ -77,15 +77,17 @@
           <div class="row">    
             <br>
             <div class="col-md-2 col-sm-3 text-center">
-              <a class="story-title" href="#"><img alt="" src="/images/<%=authors[i].img%>" style="width:100px;height:100px" class="img-circle"></a>
+              <a class="story-title" href="#"><img alt="" src="/images/<%=authors[i].image%>" style="width:100px;height:100px" class="img-circle"></a>
+              <form action="/authors/updateauthorimg/<%=authors[i]._id%>" method="POST"><button type="submit" id="update" >Update image</button></form>
             </div>
             <div style="color: black;" class="col-md-10 col-sm-9">
-              <h3><%=authors[i].title%></h3>
+              <h3><%=authors[i].name%></h3>
               <div class="row">
                 <div class="col-xs-9">
                   <h4>
-                  <small style="font-family:courier,'new courier';" class="text-muted"><a style="color: red;" href="/authors/<%=i%>" class="text-muted">Read More</a> </small>
-                  </h4></div>
+                  <small style="font-family:courier,'new courier'; " class="text-muted"><a style="color: red;" href="/authors/<%=authors[i]._id%>" >Read More</a> </small><br><br>
+                  <form action="/authors/update/<%=authors[i]._id%>" method="POST"><button id="update"  type="submit">Update</button></form><br><form action="/authors/delete/<%=authors[i]._id%>" method="POST" ><button id="update"  type="submit">Delete</button></form>  
+                </h4></div>
                 <div class="col-xs-3"></div>
               </div>
               <br><br>
